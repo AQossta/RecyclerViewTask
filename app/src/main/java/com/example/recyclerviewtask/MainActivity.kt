@@ -44,5 +44,19 @@ class MainActivity : AppCompatActivity() {
         binding.rcProducts.adapter = adapter
         adapter.submitList(listOfProducts)
 
+        val fragment1 = ExampleFirstFragment()
+        binding.btnShowFragmentFirst.setOnClickListener {
+            supportFragmentManager.beginTransaction().add(binding.tvPlaceForFragment.id, fragment1).commit()
+        }
+
+        val fragment2 = ExampleSecondFragment()
+        binding.btnShowFragmentSecond.setOnClickListener {
+            supportFragmentManager.beginTransaction().replace(binding.tvPlaceForFragment.id, fragment2).commit()
+        }
+
+        binding.btnRemoveFragment.setOnClickListener {
+            supportFragmentManager.beginTransaction().remove(fragment1).commit()
+            supportFragmentManager.beginTransaction().remove(fragment2).commit()
+        }
     }
 }
